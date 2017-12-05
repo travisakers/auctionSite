@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Auction Tool</title>
+    <link rel="stylesheet" type="text/css" href="auction.css">
+  </head>
+
+<body>
+
+<h1>Auction Site</h1>
+
+<h2>Current Listings:</h2>
+
+<h3>Sort by:</h3>
+<select>
+  <option value="name">Name</option>
+  <option value="sellerid">SellerID</option>
+  <option value="category">Category</option>
+  <option value="price">Price</option>
+</select>
+
+<table>
+	<tr>
+		<th id="button">Item</th>
+		<th>SellerID</th>
+		<th>Category</th>
+		<th>Price</th>
+	</tr>
+	<tr>
+		<td>Apple</td>
+		<td>John Doe</td>
+		<td>Food</td>
+		<td>$1</td>
+	</tr>
+	<tr>
+		<td>Apple</td>
+		<td>John Doe</td>
+		<td>Food</td>
+		<td>$1</td>
+	</tr>
+	<tr>
+		<td>Apple</td>
+		<td>John Doe</td>
+		<td>Food</td>
+		<td>$1</td>
+	</tr>
+	<tr>
+		<td>Apple</td>
+		<td>John Doe</td>
+		<td>Food</td>
+		<td>$1</td>
+	</tr>
+	<tr>
+		<td>Apple</td>
+		<td>John Doe</td>
+		<td>Food</td>
+		<td>$1</td>
+	</tr>
+</table>
+
+
+<h4>Buyer/Seller Stuff</h4>
+
+<button onclick="revealSeller()">Seller Info</button>
+<script>
+function revealSeller() {
+    var x = document.getElementById("sellerinfo");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<button onclick="revealBuyer()">Buyer Info</button>
+<script>
+function revealBuyer() {
+    var x = document.getElementById("buyerinfo");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
+
+<div id = "sellerinfo">
+	<h5>Seller Info</h5>
+	<form action = "/seller_info.php">
+  		<label for="seller">
+   		 <span>Seller Name</span>
+   		 <input type="text" id="sellername" />
+ 		</label>
+ 		<br></br>
+  	<label for="item">
+    	<span>Item Name</span>
+    	<input type="text" id="itemname" />
+ 	 </label>
+ 	 <br></br>
+ 	 <label for="item">
+    	<span>Item Description</span>
+    	<input type="text" id="itemdescription" />
+ 	 </label>
+ 	 <br></br>
+ 	 <label for="item">
+    	<span>Starting Price</span>
+    	<input type="text" id="startingprice" />
+ 	 </label>
+ 	 <br></br>
+ 	 <label for="item">
+    	<span>Category</span>
+    	<input type="text" id="itemcategory" />
+ 	 </label>
+ 	 <br></br>
+ 	 <label for="item">
+    	<span>Expiration Date</span>
+    	<input type="text" id="expirationdate" />
+ 	 </label>
+
+ 	 <br></br>
+
+ 	 <input type = "submit" value = "Submit">
+	</form>
+
+	<p>Clicking submit will send data to a page called "/seller_info.php"</p>
+
+</div>
+
+ <div id = "buyerinfo">
+ 	<h6>Buyer Info</h6>
+	<form action = "/buyer_info.php">
+  		<label for="buyer">
+   		 <span>Buyer Name</span>
+   		 <input type="text" id="buyername" />
+ 		</label>
+ 		<br></br>
+  	<label for="item">
+    	<span>Item ID</span>
+    	<input type="text" id="itemID" />
+ 	 </label>
+ 	 <br></br>
+ 	 <label for="item">
+    	<span>Bid Price</span>
+    	<input type="text" id="startingprice" />
+ 	 </label>
+ 	 <br></br>
+ 	 <input type = "submit" value = "Submit">
+	</form>
+
+	<p>Clicking submit will send data to a page called "/buyer_info.php"</p>
+
+</div>
+
+<h5>Seller's Current Items</h5>
+
+<div id = "seller-current-items">
+    <table>
+          <col class="current-items">
+	  <col class="odd">
+	  <col class="even">
+	  <col class="odd">
+	  <col class="even">
+	  <col class="odd">
+	  <col class="even">
+	  <thead>
+	    <tr>
+	      <td></td>
+	          <td><div class="seller-current-items-header">Item ID</div></td>
+              <td><div class="seller-current-items-header">Category Type</div></td>
+              <td><div class="seller-current-items-header">List Date</div></td>
+              <td><div class="seller-current-items-header">End Date</div></td>
+              <td><div class="seller-current-items-header">Current Price</div></td>
+              <td><div class="seller-current-items-header">Remove Item</div></td>
+	    </tr>
+	  </thead>
+          <tbody>
+	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>  
+	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+	  </tbody>
+ </div>
+
+
+
+
+</body>
+</html>
