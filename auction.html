@@ -13,6 +13,9 @@
 	<h1>Auction Site</h1>
 </div>
 
+
+<div id="table_section">
+
 <h2>Current Listings:</h2>
 
 <h3>Sort by:</h3>
@@ -166,6 +169,9 @@ function sortTable() {
 </tbody>
 </table>
 
+
+
+
 <div id="content1">
     <p>sample description for tv</p>
     <img src="tv.jpg" alt="television">
@@ -177,6 +183,9 @@ function sortTable() {
 
 <div id="content3">
     <p>sample description for apple</p>
+</div>
+
+
 </div>
 
 
@@ -280,6 +289,8 @@ function revealBuyer() {
 
 </div>
 
+
+<!--
 <h5>Seller's Current Items</h5>
 
 <div id = "seller-current-items">
@@ -309,6 +320,36 @@ function revealBuyer() {
 	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
 	  </tbody>
  </div>
+</table>
+</div>
+</thead>!-->
+
+
+<button onclick="document.getElementById('login_modal').style.display='block'">Login</button>
+
+<div id="login_modal" class="modal">
+ <form class="modal-form animate" action="/login_user.php">
+  <div class="imgcontainer">
+    <img src="auction.png" alt="login" class="loginPic">
+  </div>
+
+  <div class="login_container">
+    <label><b>Username</b></label>
+    <input type="text" id = "username" maxlength = "30" placeholder="Enter Username" name="username" required>
+
+    <label><b>Password</b></label>
+    <input type="password" id = "password" maxlength= "30" placeholder="Enter Password" name="password" required>
+
+    <input type= "submit" name= "Submit" value="Submit">
+        
+    <button type="submit">Login</button>
+	<div class="container" style="background-color:#f1f1f1">
+      	<button type="button" onclick="document.getElementById('login_modal').style.display='none'" class="cancelbtn">Cancel</button>
+
+  </div>
+</form>
+</div>
+
 
 
 
