@@ -9,8 +9,9 @@
   </head>
 
 <body>
-
-<h1>Auction Site</h1>
+<div id ="headerSection">
+	<h1>Auction Site</h1>
+</div>
 
 <h2>Current Listings:</h2>
 
@@ -22,7 +23,81 @@
   <option value="price">Price</option>
 </select>
 
-<table>
+<p>Click the button to sort the table alphabetically, by item name:</p>
+<p><button onclick="sortTable()">Sort</button></p>
+
+<script>
+function sortTable() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("itemsTable");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.getElementsByTagName("TR");
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[1];
+      y = rows[i + 1].getElementsByTagName("TD")[1];
+      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+        shouldSwitch= true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+</script>
+
+
+
+
+ <div class="container" style="width:500px;">  
+                <h10 align="center">Autocomplete textbox using jQuery, PHP and MySQL</h10><br />  
+                <label>Enter Item Name</label>  
+                <input type="text" name="itemauto" id="item_name" class="form-control" placeholder="Enter Item Name" />  
+                <div id="countryList"></div>  
+ </div> 
+
+<script>  
+ $(document).ready(function(){  
+      $('#country').keyup(function(){  
+           var query = $(this).val();  
+           if(query != '')  
+           {  
+                $.ajax({  
+                     url:"search.php",  
+                     method:"POST",  
+                     data:{query:query},  
+                     success:function(data)  
+                     {  
+                          $('#countryList').fadeIn();  
+                          $('#countryList').html(data);  
+                     }  
+                });  
+           }  
+      });  
+      $(document).on('click', 'li', function(){  
+           $('#country').val($(this).text());  
+           $('#countryList').fadeOut();  
+      });  
+ });  
+ </script>  
+
+
+
+
+
+
+
+
+
+
+
+
+<table id="itemsTable">
 	<thead>
 	<tr>
 		<th>&nbsp;</th>
@@ -31,6 +106,7 @@
 		<th>Category</th>
 		<th>Current Bid</th>
 		<th>Expiration Date</th>
+		<th>Want to Bid?</th>
 	</thead>
 	</tr>
 	<tbody id = "allitems">
@@ -39,20 +115,23 @@
 		<td>
 			<input type="button" name= "" value="Item Description" data-href="content1">
 		</td>
-		<td>Apple</td>
-		<td>John Doe</td>
+		<td>TV</td>
+		<td>John Smith</td>
 		<td>Food</td>
-		<td>$1</td>
-		<td>2017-10-10</td>
+		<td>$100</td>
+		<td>2017-11-10</td>
+		<td>
+			<input type="button" name= "" value="Bid" data-href="bid1">
+		</td>
 	</tr>
 	<tr>
 		<td>
 			<input type="button" name= "" value="Item Description" data-href="content2">
 		</td>
-		<td>Apple</td>
+		<td>Zebra</td>
 		<td>John Doe</td>
-		<td>Food</td>
-		<td>$1</td>
+		<td>Animal</td>
+		<td>$10</td>
 		<td>2017-10-10</td>
 	</tr>
 	<tr>
@@ -88,15 +167,16 @@
 </table>
 
 <div id="content1">
-    <p>sample description of this item</p>
+    <p>sample description for tv</p>
+    <img src="tv.jpg" alt="television">
 </div>
 
 <div id="content2">
-    <p>sample description of this item</p>
+    <p>sample description for zebra</p>
 </div>
 
 <div id="content3">
-    <p>sample description of this item</p>
+    <p>sample description for apple</p>
 </div>
 
 
@@ -127,13 +207,19 @@ function revealBuyer() {
 </script>
 
 <div id = "sellerinfo">
-	<h5>Seller Info</h5>
+	<h1>Sell an Item!</h1><span>Fill out the boxes below to submit your item for bidding!</span>
 	<form action = "/seller_info.php">
+		<div class="section">Seller Info</div>
+		<div class="inner-secton">
   		<label for="seller">
    		 <span>Seller Name</span>
    		 <input type="text" id="sellername" />
  		</label>
+ 	</div>
  		<br></br>
+
+ 		<div class="section">Item Info</div>
+ 		<div class="inner-secton">
   	<label for="item">
     	<span>Item Name</span>
     	<input type="text" id="itemname" />
@@ -158,6 +244,7 @@ function revealBuyer() {
     	<span>Expiration Date</span>
     	<input type="text" id="expirationdate" />
  	 </label>
+ 	</div>
 
  	 <br></br>
 
