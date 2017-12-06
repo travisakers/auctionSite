@@ -4,6 +4,7 @@
   <head>
     <title>Auction Tool</title>
     <link rel="stylesheet" type="text/css" href="auction.css">
+    <script src="jquery-3.2.1.js"></script>
     <script src="auctiontest.js"></script>
   </head>
 
@@ -24,6 +25,7 @@
 <table>
 	<thead>
 	<tr>
+		<th>&nbsp;</th>
 		<th>Item</th>
 		<th>SellerID</th>
 		<th>Category</th>
@@ -34,6 +36,9 @@
 	<tbody id = "allitems">
 	
 	<tr>
+		<td>
+			<input type="button" name= "" value="Item Description" data-href="content1">
+		</td>
 		<td>Apple</td>
 		<td>John Doe</td>
 		<td>Food</td>
@@ -41,6 +46,9 @@
 		<td>2017-10-10</td>
 	</tr>
 	<tr>
+		<td>
+			<input type="button" name= "" value="Item Description" data-href="content2">
+		</td>
 		<td>Apple</td>
 		<td>John Doe</td>
 		<td>Food</td>
@@ -48,12 +56,17 @@
 		<td>2017-10-10</td>
 	</tr>
 	<tr>
+		<td>
+			<input type="button" name= "" value="Item Description" data-href="content3">
+		</td>
 		<td>Apple</td>
 		<td>John Doe</td>
 		<td>Food</td>
 		<td>$1</td>
 		<td>2017-10-10</td>
 	</tr>
+
+	<!--
 	<tr>
 		<td>Apple</td>
 		<td>John Doe</td>
@@ -61,6 +74,8 @@
 		<td>$1</td>
 		<td>2017-10-10</td>
 	</tr>
+
+	
 	<tr>
 		<td>Apple</td>
 		<td>John Doe</td>
@@ -68,11 +83,19 @@
 		<td>$1</td>
 		<td>2017-10-10</td>
 	</tr>
+	!-->
 </tbody>
 </table>
 
-<div id="content">
-    <h10>item description</h10>
+<div id="content1">
+    <p>sample description of this item</p>
+</div>
+
+<div id="content2">
+    <p>sample description of this item</p>
+</div>
+
+<div id="content3">
     <p>sample description of this item</p>
 </div>
 
