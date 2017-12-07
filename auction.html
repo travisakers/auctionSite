@@ -2,6 +2,8 @@
 
 <html>
   <head>
+  	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  	<meta name="auctionSite" content="width=device-width, initial-scale=1.0">
     <title>Auction Tool</title>
     <link rel="stylesheet" type="text/css" href="auction.css">
     <script src="jquery-3.2.1.js"></script>
@@ -58,10 +60,10 @@ function sortTable() {
 
 
  <div class="container" style="width:500px;">  
-                <h10 align="center">Autocomplete textbox using jQuery, PHP and MySQL</h10><br />  
+                <h1>Autocomplete textbox using jQuery, PHP and MySQL</h1><br />  
                 <label>Enter Item Name</label>  
                 <input type="text" name="itemauto" id="item_name" class="form-control" placeholder="Enter Item Name" />  
-                <div id="countryList"></div>  
+                <div id="itemList"></div>  
  </div> 
 
 <script>  
@@ -110,13 +112,13 @@ function sortTable() {
 		<th>Current Bid</th>
 		<th>Expiration Date</th>
 		<th>Want to Bid?</th>
-	</thead>
 	</tr>
+	</thead>
 	<tbody id = "allitems">
 	
 	<tr>
 		<td>
-			<input type="button" name= "" value="Item Description" data-href="content1">
+			<input type="button" name= "button" value="Item Description" data-href="content1">
 		</td>
 		<td>TV</td>
 		<td>John Smith</td>
@@ -124,28 +126,34 @@ function sortTable() {
 		<td>$100</td>
 		<td>2017-11-10</td>
 		<td>
-			<input type="button" name= "" value="Bid" data-href="bid1">
+			<input type="button" name= "button" value="Bid" data-href="bid1">
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<input type="button" name= "" value="Item Description" data-href="content2">
+			<input type="button" name= "button" value="Item Description" data-href="content2">
 		</td>
 		<td>Zebra</td>
 		<td>John Doe</td>
 		<td>Animal</td>
 		<td>$10</td>
 		<td>2017-10-10</td>
+		<td>
+			<input type="button" name= "button" value="Bid" data-href="bid2">
+		</td>
 	</tr>
 	<tr>
 		<td>
-			<input type="button" name= "" value="Item Description" data-href="content3">
+			<input type="button" name= "button" value="Item Description" data-href="content3">
 		</td>
 		<td>Apple</td>
 		<td>John Doe</td>
 		<td>Food</td>
 		<td>$1</td>
 		<td>2017-10-10</td>
+		<td>
+			<input type="button" name= "button" value="Bid" data-href="bid3">
+		</td>
 	</tr>
 
 	<!--
@@ -220,42 +228,45 @@ function revealBuyer() {
 	<form action = "/seller_info.php">
 		<div class="section">Seller Info</div>
 		<div class="inner-secton">
-  		<label for="seller">
+  		<label for="sellername">
    		 <span>Seller Name</span>
-   		 <input type="text" id="sellername" />
+   		 <input type="text" id="sellername">
  		</label>
  	</div>
- 		<br></br>
+ 		<br>
 
  		<div class="section">Item Info</div>
  		<div class="inner-secton">
-  	<label for="item">
+  	<label for="itemname">
     	<span>Item Name</span>
-    	<input type="text" id="itemname" />
+    	<input type="text" id="itemname">
  	 </label>
- 	 <br></br>
- 	 <label for="item">
+ 	 <br>
+ 	 <label for="itemdescription">
     	<span>Item Description</span>
-    	<input type="text" id="itemdescription" />
+    	<input type="text" id="itemdescription">
  	 </label>
- 	 <br></br>
- 	 <label for="item">
+ 	 <br>
+ 	 <label for="startingprice">
     	<span>Starting Price</span>
-    	<input type="text" id="startingprice" />
+    	<span class="input-icon">
+    		<i>$</i>
+    	<input type="text" id="startingprice" placeholder="0.00">
+    </span>
  	 </label>
- 	 <br></br>
- 	 <label for="item">
+ 	 <br>
+ 	 <label for="itemcategory">
     	<span>Category</span>
-    	<input type="text" id="itemcategory" />
+    	<input type="text" id="itemcategory">
  	 </label>
- 	 <br></br>
- 	 <label for="item">
+ 	 <br>
+ 	 <label for="expirationdate">
     	<span>Expiration Date</span>
-    	<input type="text" id="expirationdate" />
+    	<input type="text" id="expirationdate" placeholder="mm-dd-yy">
  	 </label>
  	</div>
 
- 	 <br></br>
+ 	 <br>
 
  	 <input type = "submit" value = "Submit">
 	</form>
@@ -267,21 +278,21 @@ function revealBuyer() {
  <div id = "buyerinfo">
  	<h6>Buyer Info</h6>
 	<form action = "/buyer_info.php">
-  		<label for="buyer">
+  		<label for="buyername">
    		 <span>Buyer Name</span>
-   		 <input type="text" id="buyername" />
+   		 <input type="text" id="buyername">
  		</label>
- 		<br></br>
-  	<label for="item">
+ 		<br>
+  	<label for="itemID">
     	<span>Item ID</span>
-    	<input type="text" id="itemID" />
+    	<input type="text" id="itemID">
  	 </label>
- 	 <br></br>
- 	 <label for="item">
+ 	 <br>
+ 	 <label for="bidprice">
     	<span>Bid Price</span>
-    	<input type="text" id="startingprice" />
+    	<input type="text" id="bidprice">
  	 </label>
- 	 <br></br>
+ 	 <br>
  	 <input type = "submit" value = "Submit">
 	</form>
 
@@ -345,8 +356,8 @@ function revealBuyer() {
     <button type="submit">Login</button>
 	<div class="container" style="background-color:#f1f1f1">
       	<button type="button" onclick="document.getElementById('login_modal').style.display='none'" class="cancelbtn">Cancel</button>
-
-  </div>
+    </div>
+</div>
 </form>
 </div>
 
