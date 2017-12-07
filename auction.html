@@ -59,47 +59,6 @@ function sortTable() {
 
 
 
- <div class="container" style="width:500px;">  
-                <h1>Autocomplete textbox using jQuery, PHP and MySQL</h1><br />  
-                <label>Enter Item Name</label>  
-                <input type="text" name="itemauto" id="item_name" class="form-control" placeholder="Enter Item Name" />  
-                <div id="itemList"></div>  
- </div> 
-
-<script>  
- $(document).ready(function(){  
-      $('#country').keyup(function(){  
-           var query = $(this).val();  
-           if(query != '')  
-           {  
-                $.ajax({  
-                     url:"search.php",  
-                     method:"POST",  
-                     data:{query:query},  
-                     success:function(data)  
-                     {  
-                          $('#countryList').fadeIn();  
-                          $('#countryList').html(data);  
-                     }  
-                });  
-           }  
-      });  
-      $(document).on('click', 'li', function(){  
-           $('#country').val($(this).text());  
-           $('#countryList').fadeOut();  
-      });  
- });  
- </script>  
-
-
-
-
-
-
-
-
-
-
 
 
 <table id="itemsTable">
@@ -195,6 +154,42 @@ function sortTable() {
 
 
 </div>
+
+
+
+
+<div class="container" style="width:500px;">  
+    <h3>Search for Item</h3>
+    <label>Enter Item Name</label>  
+    <input type="text" name="itemauto" id="item_name" class="form-control" placeholder="Enter Item Name" />  
+    <div id="itemList"></div>  
+ </div> 
+
+<script>  
+ $(document).ready(function(){  
+      $('#item_name').keyup(function(){  
+           var query = $(this).val();  
+           if(query != '')  
+           {  
+             $.ajax({  
+                 url:"autocomp.php",  
+                 method:"POST",  
+                 data:{query:query},  
+                 success:function(data)  
+                 {  
+                      $('#itemList').fadeIn();  
+                      $('#itemList').html(data);  
+                 }  
+              });  
+           }  
+      });  
+      $(document).on('click', 'li', function(){  
+           $('#item_name').val($(this).text());  
+           $('#itemList').fadeOut();  
+      });  
+ });  
+ </script>  
+
 
 
 <h4>Buyer/Seller Stuff</h4>
