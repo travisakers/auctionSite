@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  	<meta name="auctionSite" content="width=device-width, initial-scale=1.0">
+    <title>Auction Login</title>
+    <link rel="stylesheet" type="text/css" href="accountCreation.css">
+    <script src="jquery-3.2.1.js"></script>
+    <script src="accountCreationScript.js"></script>
+  </head>
+
+
+  <body>
+
+  	<h2>New User</h2>
+  	
+  	<button onclick="revealNewUser()">New User</button>
+
+  	<div id="new_user">
+  		<label for="first">
+  			<span>First Name</span>
+  			<input type="text" id="first">
+  		</label>
+  		<br>
+  		<label for="last">
+  			<span>Last Name</span>
+  		<input type="text" id="last">
+  		</label>
+  		<br>
+  		<label for="email">
+  			<span>Email</span>
+  			<input type="text" id="email">
+  		</label>
+  		<br>
+  		<label for="username">
+  			<span>Username</span>
+  			<input type="text" id="username">
+  		</label>
+  		<br>
+  		<label for="password">
+  			<span>Password</span>
+  			<input type="password" id="password">
+  		</label>
+  		<br>
+
+  		<button id="accountSubmitButton">Submit</button>
+
+
+  	</div>
+
+
+  	<script>
+		function revealNewUser() {
+    		var x = document.getElementById("new_user");
+    		if (x.style.display === "none") {
+       			 x.style.display = "block";
+    		} else {
+        		x.style.display = "none";
+    		}
+		}
+	</script>
+
+  	<h2>Existing User</h2>
+	<button onclick="revealExistingUser()">Login</button>
+  	<div id="existing_user">
+
+  		<label for="usernameLogin">
+  			<span>Username</span>
+  			<input type="text" id="usernameLogin">
+  		</label>
+  		<br>
+  		<label for="passwordLogin">
+  			<span>Password</span>
+  			<input type="password" id="passwordLogin">
+  		</label>
+  		<br>
+  		<button id="loginSubmitButton">Submit</button>
+
+
+  	</div>
+
+
+  	<script>
+		function revealExistingUser() {
+    		var x = document.getElementById("existing_user");
+    		if (x.style.display === "none") {
+       			 x.style.display = "block";
+    		} else {
+        		x.style.display = "none";
+    		}
+		}
+	</script>
+
+
+
+
+
+  </body>

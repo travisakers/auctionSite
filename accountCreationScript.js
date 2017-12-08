@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  $('#existing_user').hide();
+  $('#new_user').hide();
+
+
+
     $("#accountSubmitButton").click(function() {
        var first = $("#first").val();           //first name field with id = first
        var last = $("#last").val();             //last name field with id = last
