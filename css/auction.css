@@ -1,0 +1,237 @@
+
+body {
+  background: #3E4649;
+  color: #f7f7f7;
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.navbar-inverse {
+    background: #2E2F31;
+    border: 0;
+}
+
+.dropdown-menu{
+  background: #2E2F31;
+}
+
+.navbar-inverse .navbar-nav li a {
+    color: #f7f7f7;
+    font-size: 16px;
+}
+.navbar-inverse .navbar-nav li a:hover {
+    background: #27A967;
+}
+.navbar-inverse .navbar-nav .dropdown-menu li a:hover {
+    background: #2C463C;
+}
+.dropdown-menu li a {
+    padding: 10px;
+}
+
+.popover{
+    background: black;
+}
+
+.itemsTable {
+    border-collapse: collapse;
+    table-layout: fixed;
+    border-color:#bababb;
+}
+
+.itemsTable tr > td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+}
+
+.itemsTable tr:nth-child(even) {
+    background-color: #2b3033;
+}
+
+.itemsTable tr > td > button{
+  background-color: black;
+  border: 1px solid white;
+}
+
+table.itemsTable tbody, table.itemsTable thead { 
+  display: block;
+}
+
+table.itemsTable tbody {
+    height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.itemsTable td{
+  
+}
+
+
+
+.jumbotron{
+  background: #27A967;
+  color: white;
+  text-align: center;
+}
+
+.jumbotron p {
+  color: white;
+  font-size: 26px;
+}
+
+img{
+  max-height: 100px;
+}
+
+h1, h2{
+  font-weight: bold;
+}
+
+h3{
+  font-family: arial, sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+
+#content {
+  display: none;
+}
+
+#allitems{
+
+}
+
+#buyerinfo{
+    width: 100%;
+    padding: 5px 0;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#sellerinfo {
+    width: 450px;
+    padding: 30px 0;
+    margin: 40px auto;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#sellerinfo .inner-section{
+    padding: 30px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+}
+
+#sellerinfo h1 {
+  padding: 20px 30px 15px 30px;
+  border-radius: 10px 10px 0 0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.12);
+  font-style: normal;
+  font-weight: 800;
+  border: 1px solid #257C9E;
+  color: white;
+  box-shadow: inset 0px 2px 4px 6px;
+}
+
+#sellerinfo input{
+  color: black;
+}
+
+#sellerinfo h1 > span{
+    display: block;
+    margin-top: 2px;
+}
+
+#sellerinfo label{
+    display: block;
+    margin-bottom: 15px;
+}
+
+#sellerinfo input[type="text"]{
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border-radius: 6px;
+
+}
+
+#sellerinfo .section{
+    color: yellow;
+    margin-bottom: 5px;
+}
+
+
+#sellerinfo input[type="submit"]{
+    background: black;
+    padding: 8px 20px 8px 20px;
+    border-radius: 5px;
+    box-shadow: inset 0px 2px 2px 0px rgba(255, 255, 255, 0.17);
+    border: 1px solid #257C9E;
+    font-size: 15px;
+}
+
+#sellerinfo input[type="submit"]:hover{
+   opacity: 0.8;
+}
+
+.login_container{
+  padding: 12px;
+}
+
+.login_container .imgcontainer{
+    text-align: center;
+    margin: 30px 0 12px 0;
+}
+
+.login_container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.modal {
+    display: none;
+    position: fixed; 
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 40px;
+}
+
+.modal-form {
+    background-color: #fefefe;
+    margin: 5px auto;
+    border: 1px solid #888;
+    width: 65%; /* Could be more or less, depending on screen size */
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+.imgcontainer img{
+    display: block;
+  margin: 0 auto;
+      width: 50%;
+}
+
+
+
+/*input { 
+  width: 200px; 
+  border: 1px solid #000; 
+  padding: 5px; 
+}*/

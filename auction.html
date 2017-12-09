@@ -2,21 +2,54 @@
 
 <html>
   <head>
-  	<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  	 <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
   	<meta name="auctionSite" content="width=device-width, initial-scale=1.0">
     <title>Auction Tool</title>
-    <link rel="stylesheet" type="text/css" href="auction.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/auction.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <script src="jquery-3.2.1.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
     <script src="auctiontest.js"></script>
   </head>
 
 <body>
-<div id ="headerSection">
-	<h1>Auction Site</h1>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>
+
+<nav class="navbar navbar-inverse navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="auction.html">UNC-bay</a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="accountCreation.html">Login</a></li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="jumbotron">
+	<div class="container">
+		<h1>UNC-Bay</h1>
+		<p>It's like eBay, but worse.</p>
+	</div>
 </div>
 
-
-<div id="table_section">
 
 <h2>Current Listings:</h2>
 
@@ -34,7 +67,7 @@
 <script>
 function sortTable() {
   var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("itemsTable");
+  table = document.getElementById("table1");
   switching = true;
   while (switching) {
     switching = false;
@@ -57,11 +90,30 @@ function sortTable() {
 </script>
 
 
+<script>
+// matches thead size with body
+$(document).ready(function(){
+	var $table = $('table.itemsTable'),
+    $bodyCells = $table.find('tbody tr:first').children(),
+    colWidth;
+
+$(window).resize(function() {
+    colWidth = $bodyCells.map(function() {
+        return $(this).width();
+    }).get();
+    
+    $table.find('thead tr').children().each(function(i, v) {
+        $(v).width(colWidth[i]);
+    });    
+}).resize();
+});
+
+</script>
 
 
 
 
-<table id="itemsTable">
+<table class="itemsTable" id="table1">
 	<thead>
 	<tr>
 		<th>&nbsp;</th>
@@ -69,20 +121,27 @@ function sortTable() {
 		<th>SellerID</th>
 		<th>Category</th>
 		<th>Current Bid</th>
-		<th>Expiration Date</th>
+		<th>End Date</th>
 		<th>Want to Bid?</th>
 	</tr>
 	</thead>
+	<tfoot>
+		<tr>
+			<td colspan="7">search for items here, add later</td>
+		</tr>
+	</tfoot>
 	<tbody id = "allitems">
 	
 	<tr>
 		<td>
-			<input type="button" name= "button" value="Item Description" data-href="content1">
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="tv item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
 		</td>
 		<td>TV</td>
 		<td>John Smith</td>
-		<td>Food</td>
-		<td>$100</td>
+		<td>Electronics</td>
+		<td>$1000000</td>
 		<td>2017-11-10</td>
 		<td>
 			<input type="button" name= "button" value="Bid" data-href="bid1">
@@ -90,7 +149,9 @@ function sortTable() {
 	</tr>
 	<tr>
 		<td>
-			<input type="button" name= "button" value="Item Description" data-href="content2">
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="zebra item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
 		</td>
 		<td>Zebra</td>
 		<td>John Doe</td>
@@ -103,7 +164,9 @@ function sortTable() {
 	</tr>
 	<tr>
 		<td>
-			<input type="button" name= "button" value="Item Description" data-href="content3">
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="apple item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
 		</td>
 		<td>Apple</td>
 		<td>John Doe</td>
@@ -115,46 +178,98 @@ function sortTable() {
 		</td>
 	</tr>
 
-	<!--
 	<tr>
-		<td>Apple</td>
-		<td>John Doe</td>
+		<td>
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="tv item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
+		</td>
+		<td>TV</td>
+		<td>John Smith</td>
 		<td>Food</td>
-		<td>$1</td>
-		<td>2017-10-10</td>
+		<td>$100</td>
+		<td>2017-11-10</td>
+		<td>
+			<input type="button" name= "button" value="Bid" data-href="bid1">
+		</td>
 	</tr>
-
-	
 	<tr>
-		<td>Apple</td>
-		<td>John Doe</td>
+		<td>
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="tv item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
+		</td>
+		<td>TV</td>
+		<td>John Smith</td>
 		<td>Food</td>
-		<td>$1</td>
-		<td>2017-10-10</td>
+		<td>$100</td>
+		<td>2017-11-10</td>
+		<td>
+			<input type="button" name= "button" value="Bid" data-href="bid1">
+		</td>
 	</tr>
-	!-->
+	<tr>
+		<td>
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="tv item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
+		</td>
+		<td>TV</td>
+		<td>John Smith</td>
+		<td>Food</td>
+		<td>$100</td>
+		<td>2017-11-10</td>
+		<td>
+			<input type="button" name= "button" value="Bid" data-href="bid1">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="tv item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
+		</td>
+		<td>TV</td>
+		<td>John Smith</td>
+		<td>Food</td>
+		<td>$100</td>
+		<td>2017-11-10</td>
+		<td>
+			<input type="button" name= "button" value="Bid" data-href="bid1">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="tv item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
+		</td>
+		<td>TV</td>
+		<td>John Smith</td>
+		<td>Food</td>
+		<td>$100</td>
+		<td>2017-11-10</td>
+		<td>
+			<input type="button" name= "button" value="Bid" data-href="bid1">
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content="tv item description blah blahblah blah blah blah blah blah.">
+  			Item Description
+			</button>
+		</td>
+		<td>TV</td>
+		<td>John Smith</td>
+		<td>Food</td>
+		<td>$100</td>
+		<td>2017-11-10</td>
+		<td>
+			<input type="button" name= "button" value="Bid" data-href="bid1">
+		</td>
+	</tr>
 </tbody>
 </table>
-
-
-
-
-<div id="content1">
-    <p>sample description for tv</p>
-    <img src="tv.jpg" alt="television">
-</div>
-
-<div id="content2">
-    <p>sample description for zebra</p>
-</div>
-
-<div id="content3">
-    <p>sample description for apple</p>
-</div>
-
-
-</div>
-
 
 
 
@@ -218,57 +333,46 @@ function revealBuyer() {
 }
 </script>
 
-<div id = "sellerinfo">
-	<h1>Sell an Item!</h1><span>Fill out the boxes below to submit your item for bidding!</span>
-	<form action = "/seller_info.php">
-		<div class="section">Seller Info</div>
-		<div class="inner-secton">
-  		<label for="sellername">
-   		 <span>Seller Name</span>
-   		 <input type="text" id="sellername">
- 		</label>
- 	</div>
- 		<br>
+  <div id="sellerinfo">
+        <h1>Sell an Item!</h1><span>Fill out the boxes below to submit your item for bidding!</span>
+        <form action="seller_info.php">
+            <div class="section">Seller Info</div>
+            <div class="inner-secton">
+                <label for="sellername">
+                    Seller name<br>
+                    <input type="text" name="sellername" id="sellername">
+                </label>
+            </div><br>
+            <div class="section">Item Info</div>
+            <div class="inner-secton">
+                <label for="itemname">
+                    Item Name<br>
+                    <input type="text" name="itemname" id="itemname">
+                </label><br>
+                <label for="itemdescription">
+                    Item Description<br>
+                    <input type="text" name="itemdescription" id="itemdescription">
+                </label><br>
+                <label for="startingprice">
+                    Starting Price ($)<br>
+                    <input type="text" name="startingprice" id="startingprice" placeholder="0.00">
+                </label><br>
+                <label for="itemcategory">
+                    Category<br>
+                    <input type="text" name="itemcategory" id="itemcategory">
+                </label><br>
+                <label for="expirationdate">
+                    Expiration Date<br>
+                    <input type="date" name="expirationdate" id="expirationdate" placeholder="mm-dd-yyyy">
+                </label>
+            </div><br>
 
- 		<div class="section">Item Info</div>
- 		<div class="inner-secton">
-  	<label for="itemname">
-    	<span>Item Name</span>
-    	<input type="text" id="itemname">
- 	 </label>
- 	 <br>
- 	 <label for="itemdescription">
-    	<span>Item Description</span>
-    	<input type="text" id="itemdescription">
- 	 </label>
- 	 <br>
- 	 <label for="startingprice">
-    	<span>Starting Price</span>
-    	<span class="input-icon">
-    		<i>$</i>
-    	<input type="text" id="startingprice" placeholder="0.00">
-    </span>
- 	 </label>
- 	 <br>
- 	 <label for="itemcategory">
-    	<span>Category</span>
-    	<input type="text" id="itemcategory">
- 	 </label>
- 	 <br>
- 	 <label for="expirationdate">
-    	<span>Expiration Date</span>
-    	<input type="text" id="expirationdate" placeholder="mm-dd-yy">
- 	 </label>
- 	</div>
+            <input type="submit" value="Submit">
+        </form>
 
- 	 <br>
+        <p>Clicking submit will send data to a page called "/seller_info.php"</p>
 
- 	 <input type = "submit" value = "Submit">
-	</form>
-
-	<p>Clicking submit will send data to a page called "/seller_info.php"</p>
-
-</div>
+    </div>
 
  <div id = "buyerinfo">
  	<h6>Buyer Info</h6>
