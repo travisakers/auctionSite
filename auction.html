@@ -20,6 +20,7 @@
 <script>
 $(document).ready(function(){
     $('[data-toggle="popover"]').popover();
+    $('#sellerinfo').hide();
 });
 </script>
 
@@ -305,11 +306,9 @@ $(window).resize(function() {
  });  
  </script>  
 
-
-
-<h4>Buyer/Seller Stuff</h4>
-
-<button onclick="revealSeller()">Seller Info</button>
+<div id="sellerButton">
+	<button onclick="revealSeller()">Submit an Item?</button>
+</div>
 <script>
 function revealSeller() {
     var x = document.getElementById("sellerinfo");
@@ -321,21 +320,9 @@ function revealSeller() {
 }
 </script>
 
-<button onclick="revealBuyer()">Buyer Info</button>
-<script>
-function revealBuyer() {
-    var x = document.getElementById("buyerinfo");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
-}
-</script>
-
   <div id="sellerinfo">
         <h1>Sell an Item!</h1><span>Fill out the boxes below to submit your item for bidding!</span>
-        <form action="seller_info.php">
+        <form action="submit_form.php">
             <div class="section">Seller Info</div>
             <div class="inner-secton">
                 <label for="sellername">
@@ -367,37 +354,29 @@ function revealBuyer() {
                 </label>
             </div><br>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" id="submitItem" min="1900-01-01">
         </form>
 
         <p>Clicking submit will send data to a page called "/seller_info.php"</p>
 
     </div>
+<script>
+$(document).ready(function(){  
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("expirationdate").setAttribute("min", today);
+});
 
- <div id = "buyerinfo">
- 	<h6>Buyer Info</h6>
-	<form action = "/buyer_info.php">
-  		<label for="buyername">
-   		 <span>Buyer Name</span>
-   		 <input type="text" id="buyername">
- 		</label>
- 		<br>
-  	<label for="itemID">
-    	<span>Item ID</span>
-    	<input type="text" id="itemID">
- 	 </label>
- 	 <br>
- 	 <label for="bidprice">
-    	<span>Bid Price</span>
-    	<input type="text" id="bidprice">
- 	 </label>
- 	 <br>
- 	 <input type = "submit" value = "Submit">
-	</form>
-
-	<p>Clicking submit will send data to a page called "/buyer_info.php"</p>
-
-</div>
+</script>
 
 </body>
 </html>
