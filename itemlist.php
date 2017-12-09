@@ -11,7 +11,7 @@ $conn = new mysqli($server, $username, $password, $database);
            }
            $mysqli->select_db("sjs4025db");
            if(isset($_POST['itemauto'])){ echo "search item successfully set"; $search_item = $_POST['itemauto']; }
-           $results = mysql_query("SELECT I.name as itemname, C.name as categoryname, MAX(B.bid_price) as bidprice , I.exp_date s expiration
+           $results = mysql_query("SELECT I.name as itemname, C.name as categoryname, MAX(B.bid_price) as bidprice , I.exp_date as expiration
            FROM Bid B, Category C, Item I, User U
            WHERE C.id = I.category_id AND B.item_id = I.id AND I.name LIKE %" .$search_item."$"
            ." GROUP BY I.id
