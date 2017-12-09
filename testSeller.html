@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="auctionSite" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <script src="jquery-3.2.1.js"></script>
+  </head>
+
+<body>
+
+
+
+  <div id="sellerinfo">
+        <h1>Sell an Item!</h1><span>Fill out the boxes below to submit your item for bidding!</span>
+        <form action="seller_info.php">
+            <div class="section">Seller Info</div>
+            <div class="inner-secton">
+                <label for="sellername">
+                    Seller name<br>
+                    <input type="text" name="sellername" id="sellername">
+                </label>
+            </div><br>
+            <div class="section">Item Info</div>
+            <div class="inner-secton">
+                <label for="itemname">
+                    Item Name<br>
+                    <input type="text" name="itemname" id="itemname">
+                </label><br>
+                <label for="itemdescription">
+                    Item Description<br>
+                    <input type="text" name="itemdescription" id="itemdescription">
+                </label><br>
+                <label for="startingprice">
+                    Starting Price ($)<br>
+                    <input type="text" name="startingprice" id="startingprice" placeholder="0.00">
+                </label><br>
+                <label for="itemcategory">
+                    Category<br>
+                    <input type="text" name="itemcategory" id="itemcategory">
+                </label><br>
+                <label for="expirationdate">
+                    Expiration Date<br>
+                    <input type="date" name="expirationdate" id="expirationdate" placeholder="mm-dd-yyyy">
+                </label>
+            </div><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <p>Clicking submit will send data to a page called "/seller_info.php"</p>
+
+    </div>
+</body>
+</html>
