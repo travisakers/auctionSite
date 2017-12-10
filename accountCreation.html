@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="auctionSite" content="width=device-width, initial-scale=1.0">
+    <title>Auction Tool</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/auction.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <script src="jquery-3.2.1.js"></script>
+    <script src="js/tether.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="accountCreationScript.js"></script>
+  </head>
+
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="auction.html">UNC-bay</a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="auction.html">Home Page</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>UNC-Bay</h1>
+    <p>Login/New User Page</p>
+  </div>
+</div>
+  	
+  <div class="userButton">
+    <h1>New User</h1>
+  	<button onclick="revealNewUser()">New User</button>
+			<form method="post">
+				<div id="new_user">
+					<label for="first">
+						<span>First Name</span>
+						<input type="text" id="first">
+					</label>
+					<br>
+					<label for="last">
+						<span>Last Name</span>
+					<input type="text" id="last">
+					</label>
+					<br>
+					<label for="email">
+						<span>Email</span>
+						<input type="text" id="email">
+					</label>
+					<br>
+					<label for="username">
+						<span>Username</span>
+						<input type="text" id="username">
+					</label>
+					<br>
+					<label for="password">
+						<span>Password</span>
+						<input type="password" id="password">
+					</label>
+					<br><input type="submit" value="Create Account" id="accountSubmitButton">
+					
+				</div>
+			</form>
+  	</div>
+
+
+  	<script>
+		function revealNewUser() {
+    		var x = document.getElementById("new_user");
+    		if (x.style.display === "none") {
+       			 x.style.display = "block";
+    		} else {
+        		x.style.display = "none";
+    		}
+		}
+	</script>
+
+
+
+<div class="userButton">
+  <h1>Existing User</h1>
+	<button onclick="revealExistingUser()">Login</button>
+
+
+  	<div id="existing_user">
+
+  		<label for="usernameLogin">
+  			<span>Username</span>
+  			<input type="text" id="usernameLogin">
+  		</label>
+  		<br>
+  		<label for="passwordLogin">
+  			<span>Password</span>
+  			<input type="password" id="passwordLogin">
+  		</label>
+  		<br>
+  		<button id="loginSubmitButton">Submit</button>
+
+
+  	</div>
+    </div>
+
+
+  	<script>
+		function revealExistingUser() {
+    		var x = document.getElementById("existing_user");
+    		if (x.style.display === "none") {
+       			 x.style.display = "block";
+    		} else {
+        		x.style.display = "none";
+    		}
+		}
+	</script>
+
+
+
+
+
+	</body>
+	</html>
