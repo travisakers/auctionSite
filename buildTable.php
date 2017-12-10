@@ -22,14 +22,17 @@ $conn = new mysqli($server, $username, $password, $database);
 		</tr>
 
             <?php
+            $results = mysql_query("SELECT I.description as itemdescription, I.name as itemname, C.name as categoryname, MAX(B.bid_price) as bidprice , I.exp_date as expiration
+           FROM Bid B, Category C, Item I, User U
+           WHERE C.id = I.category_id AND B.item_id = I.id AND I.name LIKE %"
+           
                while ($row = mysql_fetch_array($query)) {
                		echo "<tr>";
                    echo "<td><button type="button" class="btn btn-secondary" data-container="body" data-toggle="popover" data-placement="right" data-content=".$row['itemdescription']."</button></td>";
                    echo "<td>".$row['itemname']."</td>";
-                   echo "<td>".$row['seller']."</td>";
-                   echo "<td>".$row['category']."</td>";
-                   echo "<td>".$row['currentBid']."</td>";
-                   echo "<td>".$row['expDate']."</td>";
+                   echo "<td>".$row['categoryname']."</td>";
+                   echo "<td>".$row['bidprice']."</td>";
+                   echo "<td>".$row['expiration']."</td>";
                    echo "<td><input type="button" name= "button" value="Bid" data-href="bid1"></td>";
                    echo "</tr>";
                }
