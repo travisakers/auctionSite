@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+
+<head>
+	<title>Meal Input</title>
+</head>
+
+<link href = "css/bootstrap.min.css" rel = "stylesheet">
+<script src="/Courses/comp426-f16/jquery-3.1.0.js"></script>
+<script src = "js/bootstrap.min.js"></script>
+<script src = "js/script.js"></script>
+<script src = "js/Tracker.js"></script>
+
+<style>
+    .fieldset-auto-width {
+        box-shadow: 10px 10px 15px #888888;
+        background-color: cornsilk;
+        border: ridge;
+        border-color: darkgray;
+        width: 165px;
+        max-width: 165px;
+    }
+    legend {
+      float: left;
+      width: 100%;
+      padding: 0;
+      font-style: normal;
+    }
+    form{
+        font-style: oblique;
+    }
+    .small {
+        font-variant: small-caps;
+    }
+    .bigger{
+        font-size: 275%;
+    }
+    .big{
+        font-size: 125%;
+    }
+    .bold{
+        font-weight: 500;
+    }
+    .button {
+    background-color: yellowgreen;
+    border: outset;
+    color: white;
+    padding: 7px 25px;
+    text-align: center;
+    text-decoration: none;
+    margin:0 auto;
+    display: table;
+    font-size: 20px;
+    }
+    .solid {
+        border-style: inset;
+    }
+    input, select{
+        border: inset;
+        margin:0 auto;
+        display: table;
+    }
+    input[type="text"] {
+        width: 150px;
+    }
+    .font1{
+        font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+    }
+    p{
+        text-shadow: 2px 1px #888888;
+        color: black;
+    }
+    table {
+        width: 100%;
+        padding-left: 220px;
+        font-family: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+        font-variant: small-caps;
+        border-spacing: 0;
+    }
+    td, th {
+        border: 1px solid black;
+        text-align: center;
+        padding: 4px;
+        width: 10%;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+    input[type="submit"]:hover{
+	   background: limegreen;
+    }
+	caption {
+		color: black;
+		align: center;
+	}
+</style>
+
+<body style="background-color: linen">
+    <div style="width: 100%; overflow:auto">
+	
+        <p align="center" class="small bigger bold font1">Your Meal Tracker</p>
+		<div style="float:left">
+		<form id="myForm" align="left" class="small legend body font1">
+            <fieldset class="fieldset-auto-width">
+                <legend class="big" align="center">Log a meal</legend><br><br>
+                  Meal<br>
+                  <select  id="meal" name="meal" style="width: 80%">
+					<option value="lunch">Lunch</option>
+					<option value="dinner">Dinner</option>
+					<option value="snack">Snack</option>
+					</select>
+					<br>
+					
+                  Item<br>
+                  <input type="text" name="item" id="item"><br>
+                  Calories<br>
+                  <input type="number"  name="calories" id="calories"><br>
+                  Carbs<br>
+                  <input type="number" name="carbs" id="carbs"><br>
+                  Protein<br>
+                  <input type="number" name="protein" id="protein"><br>
+                  Fat<br>
+                  <input type="number" name="fat" id="fat"><br><br>
+                  <input class="button small font1" type="submit" value="Submit">
+            </fieldset>
+        </form>
+		</div>
+		<div style="float: right; width: 80%; padding-right: 100px">
+        <table id = "mainTable">
+            <tr style="background-color: yellowgreen">
+                <th>Meal</th>
+                <th>Item</th>
+                <th>Calories</th>
+                <th>Carbs</th>
+                <th>Protein</th>
+                <th>Fat</th>
+            </tr>
+        </table>
+		<br />
+		<table id="sumTable">
+		</table>
+		 </div>
+        </div>
+		
+   
+		
+</body>
