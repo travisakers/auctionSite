@@ -2,7 +2,6 @@ var url_base = "localhost/final/auction.html";
 
 $(document).ready(
 		function() {
-
 			$("#submitItem").click(
 					function(e) {
 						e.preventDefault();
@@ -12,11 +11,11 @@ $(document).ready(
 						var itemPrice = $("#startingprice").val();
 						var itemCat = $("#itemcategory").val();
 						var itemExp = $("#expirationdate").val();
-						var dataString = 'itemname=' + itemname
-								+ '&itemdescription=' + itemdescription
-								+ '&startingprice=' + startingprice
-								+ '&itemcategory=' + itemcategory
-								+ '&expirationdate=' + password;
+						var dataString = 'itemname=' + itemName
+								+ '&itemdescription=' + itemDesc
+								+ '&startingprice=' + itemPrice
+								+ '&itemcategory=' + itemCat
+								+ '&expirationdate=' + itemExp;
 
 						if (itemName == '') {
 							alert("Please fill in the item name");
@@ -27,13 +26,16 @@ $(document).ready(
 						} else if (itemExp == '') {
 							alert("Please specify an expiration date");
 						} else {
-							$.ajax(url_base + "/submit_form.php", {
+							$.ajax({
 								type : "POST",
 								url : "submit_form.php",
-								data : dataString,
+								data : $('form').serialize(),
 								cache : false,
-								success : function() {
-									alert(result);
+								success : function(result) {
+									console.log("Signup was successful");
+								},
+								error : function() {
+									console.log("Signup was unsuccessful");
 								}
 							});
 							return false;

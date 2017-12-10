@@ -54,5 +54,5 @@ if ($conn->query($item_sql) === TRUE) {
 } else {
     echo "Error: " . $item_sql . '\n' . $conn->error;
 }
-
+mysqli_close($connection);
 ?>
