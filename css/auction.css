@@ -72,6 +72,10 @@ table.itemsTable tbody {
   
 }
 
+.selected{
+  color: red;
+}
+
 
 
 .jumbotron{
@@ -194,6 +198,16 @@ h3{
 #sellerinfo input[type="submit"]:hover{
    opacity: 0.8;
 }
+
+.bidButton{
+  padding-top: 15px;
+  padding-left: 20px;
+}
+
+.bidButton input{
+  color: black;
+}
+
 
 .userButton{
   text-align: center;
