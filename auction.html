@@ -307,8 +307,10 @@ $(window).resize(function() {
  </script>  
 
 <div id="sellerButton">
-	<button onclick="revealSeller()">Submit an Item?</button>
+	<h1>Want to submit an item for sale?</h1>
+	<button onclick="revealSeller()">Submit an Item</button>
 </div>
+
 <script>
 function revealSeller() {
     var x = document.getElementById("sellerinfo");
@@ -322,14 +324,7 @@ function revealSeller() {
 
   <div id="sellerinfo">
         <h1>Sell an Item!</h1><span>Fill out the boxes below to submit your item for bidding!</span>
-        <form action="submit_form.php">
-            <div class="section">Seller Info</div>
-            <div class="inner-secton">
-                <label for="sellername">
-                    Seller name<br>
-                    <input type="text" name="sellername" id="sellername">
-                </label>
-            </div><br>
+        <form action="submit_form.php" method="post">
             <div class="section">Item Info</div>
             <div class="inner-secton">
                 <label for="itemname">
@@ -376,6 +371,13 @@ today = yyyy+'-'+mm+'-'+dd;
 document.getElementById("expirationdate").setAttribute("min", today);
 });
 
+</script>
+<script>
+$("#sellerButton").click(function() {
+    $('html,body').animate({
+        scrollTop: $("#sellerinfo").offset().top},
+        'slow');
+});
 </script>
 
 </body>
