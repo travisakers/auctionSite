@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta name="auctionSite" content="width=device-width, initial-scale=1.0">
+    <title>Auction Tool</title>
+    <link rel="stylesheet" type="text/css" href="auction.css">
+    <script src="jquery-3.2.1.js"></script>
+    <script src="auctiontest.js"></script>
+</head>
+
+<body>
+    <div id="headerSection">
+        <h1>Auction Site</h1>
+    </div>
+
+
+    <div id="table_section">
+
+        <h2>Current Listings:</h2>
+
+        <h3>Sort by:</h3>
+        <select>
+  <option value="name">Name</option>
+  <option value="sellerid">SellerID</option>
+  <option value="category">Category</option>
+  <option value="price">Price</option>
+</select>
+
+        <p>Click the button to sort the table alphabetically, by item name:</p>
+        <p><button onclick="sortTable()">Sort</button></p>
+
+        <script>
+            function sortTable() {
+                var table, rows, switching, i, x, y, shouldSwitch;
+                table = document.getElementById("itemsTable");
+                switching = true;
+                while (switching) {
+                    switching = false;
+                    rows = table.getElementsByTagName("TR");
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementsByTagName("TD")[1];
+                        y = rows[i + 1].getElementsByTagName("TD")[1];
+                        if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            shouldSwitch = true;
+                            break;
+                        }
+                    }
+                    if (shouldSwitch) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                    }
+                }
+            }
+        </script>
+
+        <table id="itemsTable">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Item</th>
+                    <th>SellerID</th>
+                    <th>Category</th>
+                    <th>Current Bid</th>
+                    <th>Expiration Date</th>
+                    <th>Want to Bid?</th>
+                </tr>
+            </thead>
+            <tbody id="allitems">
+
+                <tr>
+                    <td>
+                        <input type="button" name="button" value="Item Description" data-href="content1">
+                    </td>
+                    <td>TV</td>
+                    <td>John Smith</td>
+                    <td>Food</td>
+                    <td>$100</td>
+                    <td>2017-11-10</td>
+                    <td>
+                        <input type="button" name="button" value="Bid" data-href="bid1">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" name="button" value="Item Description" data-href="content2">
+                    </td>
+                    <td>Zebra</td>
+                    <td>John Doe</td>
+                    <td>Animal</td>
+                    <td>$10</td>
+                    <td>2017-10-10</td>
+                    <td>
+                        <input type="button" name="button" value="Bid" data-href="bid2">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" name="button" value="Item Description" data-href="content3">
+                    </td>
+                    <td>Apple</td>
+                    <td>John Doe</td>
+                    <td>Food</td>
+                    <td>$1</td>
+                    <td>2017-10-10</td>
+                    <td>
+                        <input type="button" name="button" value="Bid" data-href="bid3">
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div id="content1">
+            <p>sample description for tv</p>
+            <img src="tv.jpg" alt="television">
+        </div>
+
+        <div id="content2">
+            <p>sample description for zebra</p>
+        </div>
+
+        <div id="content3">
+            <p>sample description for apple</p>
+        </div>
+
+
+    </div>
+
+    <div class="container" style="width:500px;">
+        <h3>Search for Item</h3>
+        <label>Enter Item Name</label>
+        <input type="text" name="itemauto" id="item_name" class="form-control" placeholder="Enter Item Name" />
+        <div id="itemList"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#item_name').keyup(function() {
+                var query = $(this).val();
+                if (query != '') {
+                    $.ajax({
+                        url: "autocomp.php",
+                        method: "POST",
+                        data: {
+                            query: query
+                        },
+                        success: function(data) {
+                            $('#itemList').fadeIn();
+                            $('#itemList').html(data);
+                        }
+                    });
+                }
+            });
+            $(document).on('click', 'li', function() {
+                $('#item_name').val($(this).text());
+                $('#itemList').fadeOut();
+            });
+        });
+    </script>
+
+
+
+    <h4>Buyer/Seller Stuff</h4>
+
+    <button onclick="revealSeller()">Seller Info</button>
+    <script>
+        function revealSeller() {
+            var x = document.getElementById("sellerinfo");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+    <button onclick="revealBuyer()">Buyer Info</button>
+    <script>
+        function revealBuyer() {
+            var x = document.getElementById("buyerinfo");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+
+    <div id="sellerinfo">
+        <h1>Sell an Item!</h1><span>Fill out the boxes below to submit your item for bidding!</span>
+        <form action="seller_info.php" method = "post">
+            <div class="section">Seller Info</div>
+            <div class="inner-secton">
+                <label for="sellername">
+                    Seller name<br>
+                    <input type="text" name="sellername" id="sellername">
+                </label>
+            </div><br>
+            <div class="section">Item Info</div>
+            <div class="inner-secton">
+                <label for="itemname">
+                    Item Name<br>
+                    <input type="text" name="itemname" id="itemname">
+                </label><br>
+                <label for="itemdescription">
+                    Item Description<br>
+                    <input type="text" name="itemdescription" id="itemdescription">
+                </label><br>
+                <label for="startingprice">
+                    Starting Price<br>
+                    <input type="text" name="startingprice" id="startingprice" placeholder="$0.00">
+                </label><br>
+                <label for="itemcategory">
+                    Category<br>
+                    <input type="text" name="itemcategory" id="itemcategory">
+                </label><br>
+                <label for="expirationdate">
+                    Expiration Date<br>
+                    <input type="text" name="expirationdate" id="expirationdate" placeholder="mm-dd-yy">
+                </label>
+            </div><br>
+
+            <input type="submit" value="Submit">
+        </form>
+
+        <p>Clicking submit will send data to a page called "/seller_info.php"</p>
+
+    </div>
+
+    <div id="buyerinfo">
+        <h6>Buyer Info</h6>
+        <form action="/buyer_info.php">
+            <label for="buyername">
+   		 <span>Buyer Name</span>
+   		 <input type="text" id="buyername">
+ 		</label>
+            <br>
+            <label for="itemID">
+    	<span>Item ID</span>
+    	<input type="text" id="itemID">
+ 	 </label>
+            <br>
+            <label for="bidprice">
+    	<span>Bid Price</span>
+    	<input type="text" id="bidprice">
+ 	 </label>
+            <br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <p>Clicking submit will send data to a page called "/buyer_info.php"</p>
+
+    </div>
+
+
+    <!--
+<h5>Seller's Current Items</h5>
+
+<div id = "seller-current-items">
+    <table>
+          <col class="current-items">
+	  <col class="odd">
+	  <col class="even">
+	  <col class="odd">
+	  <col class="even">
+	  <col class="odd">
+	  <col class="even">
+	  <thead>
+	    <tr>
+	      <td></td>
+	          <td><div class="seller-current-items-header">Item ID</div></td>
+              <td><div class="seller-current-items-header">Category Type</div></td>
+              <td><div class="seller-current-items-header">List Date</div></td>
+              <td><div class="seller-current-items-header">End Date</div></td>
+              <td><div class="seller-current-items-header">Current Price</div></td>
+              <td><div class="seller-current-items-header">Remove Item</div></td>
+	    </tr>
+	  </thead>
+          <tbody>
+	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+	    <tr><td>Item Name</td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td><td> </td></tr>
+	  </tbody>
+ </div>
+</table>
+</div>
+</thead>!-->
+
+    <button onclick="document.getElementById('login_modal').style.display='block'">Login</button>
+
+    <div id="login_modal" class="modal">
+        <form class="modal-form animate" action="/login_user.php">
+            <div class="imgcontainer">
+                <img src="auction.png" alt="login" class="loginPic">
+            </div>
+
+            <div class="login_container">
+                <label><b>Username</b></label>
+                <input type="text" id="username" maxlength="30" placeholder="Enter Username" name="username" required>
+
+                <label><b>Password</b></label>
+                <input type="password" id="password" maxlength="30" placeholder="Enter Password" name="password" required>
+
+                <input type="submit" name="Submit" value="Submit">
+
+                <button type="submit">Login</button>
+                <div class="container" style="background-color:#f1f1f1">
+                    <button type="button" onclick="document.getElementById('login_modal').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</body>
+
+</html>
