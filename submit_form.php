@@ -43,6 +43,7 @@ $seller_id_sql = "SELECT id FROM User WHERE username = '$seller_name'";
 $seller_id_obj = $conn->query($seller_id_sql);
 $sellerrow = mysqli_fetch_assoc($seller_id_obj);
 $seller_id = $row["id"];
+$seller_id = 1;
 
 
 $item_sql = "INSERT INTO Item (name, seller_id, category_id, starting_price, description, exp_date)
