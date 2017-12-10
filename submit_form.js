@@ -1,3 +1,5 @@
+var url_base = "localhost/final/auction.html";
+
 $(document).ready(
 		function() {
 
@@ -24,20 +26,18 @@ $(document).ready(
 						} else if (itemExp == '') {
 							alert("Please specify an expiration date");
 						} else {
-							$.ajax({
+							$.ajax(url_base + "/submit_form.php", {
 								type : "POST",
-								url : "submit_form",
+								url : "submit_form.php",
 								data : dataString,
 								cache : false,
-								success : function(result) {
+								success : function() {
 									alert(result);
-								},
-								error : function(jqXHR, textStatus,
-										errorMessage) {
-									console.log(errorMessage); // Optional
 								}
 							});
+							return false;
 						}
 
 					});
+
 		});
