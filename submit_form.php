@@ -36,16 +36,22 @@ $categoryID_sql = "SELECT id
 $category_id_obj = $conn->query($categoryID_sql);
 $row = mysqli_fetch_assoc($category_id_obj); // gets the single array category id
 $category_id = $row["id"];
-$seller_id = $_SESSION['username'];
-//$seller_id = 1;
+$seller_name = $_SESSION['username'];
+
+
+$seller_id_sql = "SELECT id FROM User WHERE username = '$seller_name'";
+$seller_id_obj = $conn->query($seller_id_sql);
+$sellerrow = mysqli_fetch_assoc($seller_id_obj);
+$seller_id = $row["id"];
+
 
 $item_sql = "INSERT INTO Item (name, seller_id, category_id, starting_price, description, exp_date)
 			 VALUES ('$item_name', '$seller_id', '$category_id', '$price', '$description', '$exp_date')";
 
 if ($conn->query($item_sql) === TRUE) {
-    //echo "New Item added \n";
+    echo "New Item added \n";
 } else {
-   // echo "Error: " . $item_sql . '\n' . $conn->error;
+    echo "Error: " . $item_sql . '\n' . $conn->error;
 }
 
 ?>

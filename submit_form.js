@@ -6,6 +6,7 @@ $(document).ready(
 			$("#submitItem").click(
 					function(e) {
 						e.preventDefault();
+						alert("submit clicked");
 						var itemName = $("#itemname").val();
 						var itemDesc = $("#itemdescription").val();
 						var itemPrice = $("#startingprice").val();
