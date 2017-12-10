@@ -1,7 +1,7 @@
 <?PHP
 session_start();
 include 'ChromePhp.php';
-ChromePhp::log('Hello console!');
+echo 'hello!';
 $username = "sjs4025";
 $password = "qweqaz!234567";
 $server = "classroom.cs.unc.edu";
@@ -38,21 +38,29 @@ $row = mysqli_fetch_assoc($category_id_obj); // gets the single array category i
 $category_id = $row["id"];
 $seller_name = $_SESSION['username'];
 
-
 $seller_id_sql = "SELECT id FROM User WHERE username = '$seller_name'";
 $seller_id_obj = $conn->query($seller_id_sql);
 $sellerrow = mysqli_fetch_assoc($seller_id_obj);
 $seller_id = $row["id"];
 $seller_id = 1;
 
-
 $item_sql = "INSERT INTO Item (name, seller_id, category_id, starting_price, description, exp_date)
 			 VALUES ('$item_name', '$seller_id', '$category_id', '$price', '$description', '$exp_date')";
 
+
+
 if ($conn->query($item_sql) === TRUE) {
-    echo "New Item added \n";
+    
+    $item_id = $conn->insert_id;
+    $bid_sql = "INSERT INTO Bid (item_id, buyer_id, bid_price) VALUES('$item_id','$seller_id', '$price')";
+    printf ("New Record has id %d.\n", $mysqli->insert_id);
+    if ($conn->query($bid_sql) === TRUE) {
+        echo "New Item added \n";
+    } else {
+        echo "Error: " . $bid_sql . '\n' . $conn->error;
+    }
 } else {
     echo "Error: " . $item_sql . '\n' . $conn->error;
 }
-mysqli_close($connection);
+mysqli_close($conn);
 ?>

@@ -32,10 +32,10 @@ $(document).ready(
 								data : $('form').serialize(),
 								cache : false,
 								success : function(result) {
-									console.log("Signup was successful");
+									console.log("submitted item");
 								},
 								error : function() {
-									console.log("Signup was unsuccessful");
+									console.log("WRONG");
 								}
 							});
 							return false;
