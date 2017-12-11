@@ -9,32 +9,52 @@ button:hover{
   opacity: 0.6;
 }
 
+#titleSection{
+  padding-left: 15px;
+}
 
 .navbar-inverse {
     background: #2E2F31;
     border: 0;
 }
 
-.dropdown-menu{
-  background: #2E2F31;
-}
-
 .navbar-inverse .navbar-nav li a {
     color: #f7f7f7;
     font-size: 16px;
 }
+
 .navbar-inverse .navbar-nav li a:hover {
-    background: #27A967;
+    background: #4B9CD3;
 }
-.navbar-inverse .navbar-nav .dropdown-menu li a:hover {
-    background: #2C463C;
-}
-.dropdown-menu li a {
-    padding: 10px;
-}
+
 
 .popover{
     background: black;
+}
+
+#sortItems button{
+  color: black;
+  padding: 8px;
+  background: solid white;
+}
+
+#sortItems{
+  padding-bottom: 15px;
+  padding-left: 15px;
+}
+
+#itemSearch input{
+  color: black;
+  width: 400px;
+}
+
+#itemSearch{
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+#itemList{
+  padding-bottom: 15px;
 }
 
 .itemsTable {
@@ -72,6 +92,10 @@ table.itemsTable tbody {
   
 }
 
+.itemsTable tr:hover{
+  opacity: 0.8;
+}
+
 .selected{
   color: red;
 }
@@ -79,7 +103,7 @@ table.itemsTable tbody {
 
 
 .jumbotron{
-  background: #27A967;
+  background: #4B9CD3;
   color: white;
   text-align: center;
 }
@@ -117,10 +141,6 @@ h3{
 
 #content {
   display: none;
-}
-
-#allitems{
-
 }
 
 #buyerinfo{
@@ -227,8 +247,13 @@ h3{
 }
 
 
+#new_user > label > input{
+  color:black;
+}
 
-
+#existing_user > label > input{
+  color:black;
+}
 
 
 
