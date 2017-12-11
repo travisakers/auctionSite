@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="auctionSite" content="width=device-width, initial-scale=1.0">
-<title>Auction Tool</title>
+<title>UNC-Bay</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/auction.css" rel="stylesheet">
 <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700'
@@ -16,6 +16,7 @@
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="submit_form.js"></script>
+<script src="bid_form.js"></script>
 </head>
 
 <body>
@@ -26,6 +27,7 @@
 			$('#sellerinfo').hide();
 		});
 	</script>
+
 
 	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container">
@@ -43,7 +45,6 @@
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="accountCreation.html">Login</a></li>
-					<li><a href="contact.html">Contact</a></li>
 				</ul>
 			</div>
 		</div>
@@ -56,24 +57,37 @@
 		</div>
 	</div>
 
-
+<div id="titleSection">
 	<h2>Current Listings:</h2>
-
+</div>
+<!--
 	<h3>Sort by:</h3>
-	<select>
-		<option value="name">Name</option>
-		<option value="sellerid">SellerID</option>
-		<option value="category">Category</option>
-		<option value="price">Price</option>
+	<select id="categorySelect">
+		<option value="electronics">Electronics</option>
+		<option value="sellerid">Health</option>
+		<option value="category">School/Work</option>
+		<option value="price">Clothing/Fashion</option>
+		<option value="price">Art</option>
+		<option value="price">Home</option>
+		<option value="price">Sporting Goods</option>
+		<option value="price">Toys/Hobbies</option>
+		<option value="price">Other</option>
 	</select>
+	!-->
+<div id="sortItems">
+	<p>Click a button below for how you'd like to sort the items:</p>
+	
+		<button onclick="sortTableName()">Item Name</button>
+		<button onclick="sortCategory()">Item Category</button>
+		<button onclick="sortBid()">Current Bid</button>
+		<button onclick="sortDate()">Date</button>
 
-	<p>Click the button to sort the table alphabetically, by item name:</p>
-	<p>
-		<button onclick="sortTable()">Sort</button>
-	</p>
+</div>
+
+	
 
 	<script>
-		function sortTable() {
+		function sortTableName() {
 			var table, rows, switching, i, x, y, shouldSwitch;
 			table = document.getElementById("table1");
 			switching = true;
@@ -97,6 +111,84 @@
 		}
 	</script>
 
+	<script>
+		function sortCategory(){
+		var table, rows, switching, i, x, y, shouldSwitch;
+			table = document.getElementById("table1");
+			switching = true;
+			while (switching) {
+				switching = false;
+				rows = table.getElementsByTagName("TR");
+				for (i = 1; i < (rows.length - 1); i++) {
+					shouldSwitch = false;
+					x = rows[i].getElementsByTagName("TD")[3];
+					y = rows[i + 1].getElementsByTagName("TD")[3];
+					if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+						shouldSwitch = true;
+						break;
+					}
+				}
+				if (shouldSwitch) {
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+				}
+			}
+		}
+
+	</script>
+
+	<script>
+		function sortBid(){
+		var table, rows, switching, i, x, y, shouldSwitch;
+			table = document.getElementById("table1");
+			switching = true;
+			while (switching) {
+				switching = false;
+				rows = table.getElementsByTagName("TR");
+				for (i = 1; i < (rows.length - 1); i++) {
+					shouldSwitch = false;
+					x = rows[i].getElementsByTagName("TD")[4];
+					y = rows[i + 1].getElementsByTagName("TD")[4];
+					if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+						shouldSwitch = true;
+						break;
+					}
+				}
+				if (shouldSwitch) {
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+				}
+			}
+		}
+
+	</script>
+
+	<script>
+		function sortDate(){
+		var table, rows, switching, i, x, y, shouldSwitch;
+			table = document.getElementById("table1");
+			switching = true;
+			while (switching) {
+				switching = false;
+				rows = table.getElementsByTagName("TR");
+				for (i = 1; i < (rows.length - 1); i++) {
+					shouldSwitch = false;
+					x = rows[i].getElementsByTagName("TD")[5];
+					y = rows[i + 1].getElementsByTagName("TD")[5];
+					if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+						shouldSwitch = true;
+						break;
+					}
+				}
+				if (shouldSwitch) {
+					rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+					switching = true;
+				}
+			}
+		}
+
+	</script>
+
 
 	<script>
 		// matches thead size with body
@@ -118,6 +210,60 @@
 	</script>
 
 
+<div id="itemSearch">
+
+	<input type="text" id="item_name" onkeyup="searchItem()" placeholder="Search for an item..." title="Search for an item">
+	<div id="itemList"></div>
+
+</div>
+
+<script>
+		$(document).ready(function() {
+			$('#item_name').keyup(function() {
+				var query = $(this).val();
+				if (query != '') {
+					$.ajax({
+						url : "autocomp.php",
+						method : "POST",
+						data : {
+							query : query
+						},
+						success : function(data) {
+							$('#itemList').fadeIn();
+							$('#itemList').html(data);
+						}
+					});
+				}
+			});
+			$(document).on('click', 'li', function() {
+				$('#item_name').val($(this).text());
+				$('#itemList').fadeOut();
+			});
+		});
+	</script>
+
+<script>
+function searchItem() {
+  var td, td2, i;
+  var input = document.getElementById("item_name");
+  var filter = input.value.toUpperCase();
+  var table = document.getElementById("table1");
+  var tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    td2 = tr[i].getElementsByTagName("td")[3];
+    if (td || td2) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+
 
 
 	<table class="itemsTable" id="table1">
@@ -129,7 +275,6 @@
 				<th>Category</th>
 				<th>Current Bid</th>
 				<th>End Date</th>
-				<th>Want to Bid?</th>
 			</tr>
 		</thead>
 
@@ -145,10 +290,8 @@
 				<td>TV</td>
 				<td>John Smith</td>
 				<td>Electronics</td>
-				<td>$1000000</td>
-				<td>2017-11-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid1"></td>
+				<td>1000000</td>
+				<td>2017-12-7</td>
 			</tr>
 			<tr>
 				<td>
@@ -160,10 +303,8 @@
 				<td>Zebra</td>
 				<td>John Doe</td>
 				<td>Animal</td>
-				<td>$10</td>
-				<td>2017-10-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid2"></td>
+				<td>10</td>
+				<td>2017-12-6</td>
 			</tr>
 			<tr>
 				<td>
@@ -176,9 +317,7 @@
 				<td>John Doe</td>
 				<td>Food</td>
 				<td>$1</td>
-				<td>2017-10-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid3"></td>
+				<td>2017-12-8</td>
 			</tr>
 
 			<tr>
@@ -190,11 +329,9 @@
 				</td>
 				<td>TV</td>
 				<td>John Smith</td>
-				<td>Food</td>
+				<td>Electronics</td>
 				<td>$100</td>
-				<td>2017-11-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid1"></td>
+				<td>2017-11-09</td>
 			</tr>
 			<tr>
 				<td>
@@ -208,8 +345,6 @@
 				<td>Food</td>
 				<td>$100</td>
 				<td>2017-11-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid1"></td>
 			</tr>
 			<tr>
 				<td>
@@ -223,8 +358,6 @@
 				<td>Food</td>
 				<td>$100</td>
 				<td>2017-11-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid1"></td>
 			</tr>
 			<tr>
 				<td>
@@ -238,8 +371,6 @@
 				<td>Food</td>
 				<td>$100</td>
 				<td>2017-11-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid1"></td>
 			</tr>
 			<tr>
 				<td>
@@ -253,8 +384,6 @@
 				<td>Food</td>
 				<td>$100</td>
 				<td>2017-11-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid1"></td>
 			</tr>
 			<tr>
 				<td>
@@ -268,8 +397,6 @@
 				<td>Food</td>
 				<td>$100</td>
 				<td>2017-11-10</td>
-				<td><input type="button" name="button" value="Bid"
-					data-href="bid1"></td>
 			</tr>
 		</tbody>
 	</table>
@@ -300,6 +427,7 @@
 					rowSelected.className += " selected";
 					var itemID = rowSelected.id;
 					document.getElementById('bidItem').value = itemID;
+					document.getElementById('bidAmount').setAttribute("min", rowSelected.getElementsByTagName("td")[4].innerHTML);
 
 				}
 			}
@@ -311,17 +439,14 @@
 
 
 	<div class="bidButton">
-		<form action="bid.php">
-			Bid: <input type="number" name="bidAmount" step="0.01" min="0">
+		<form method="post">
+			Bid: <input type="number" id="bidAmount" name="bidAmount" step="0.01" min="0">
 			<input type="hidden" id="bidItem" name="bidItem" value="1"> <input
-				type="submit" value="Submit Bid">
+				type="submit" value="Submit Bid" id="submitbid">
 		</form>
 	</div>
 
-
-
-
-
+<!--
 	<div class="container" style="width: 500px;">
 		<h3>Search for Item</h3>
 		<label>Enter Item Name</label> <input type="text" name="itemauto"
@@ -353,6 +478,8 @@
 			});
 		});
 	</script>
+
+	!-->
 
 	<div id="sellerButton">
 		<h1>Want to submit an item for sale?</h1>
@@ -396,12 +523,10 @@
 						<option value="other">Other</option>
 				</select>
 				</label><br> <label for="expirationdate"> Expiration Date<br>
-					<input type="date" name="expirationdate" id="expirationdate"
-					placeholder="mm-dd-yyyy">
+					<input type="date" name="expirationdate" id="expirationdate">
 				</label>
 			</div>
-			<br> <input type="submit" value="Submit" id="submitItem"
-				min="1900-01-01">
+			<br> <input type="submit" value="Submit" id="submitItem">
 		</form>
 
 		<p>Clicking submit will submit your item!</p>
