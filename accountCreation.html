@@ -13,6 +13,7 @@
     <script src="js/tether.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="accountCreationScript.js"></script>
+	  <script src="loginButton.js"></script>
   </head>
 
 
@@ -100,21 +101,15 @@
 
 
   	<div id="existing_user">
-
-  		<label for="usernameLogin">
-  			<span>Username</span>
-  			<input type="text" id="usernameLogin">
-  		</label>
-  		<br>
-  		<label for="passwordLogin">
-  			<span>Password</span>
-  			<input type="password" id="passwordLogin">
-  		</label>
-  		<br>
-  		<button id="loginSubmitButton">Submit</button>
-
-
-  	</div>
+			<form method="post">
+				<label for="usernameLogin"> <span>Username</span> <input
+					type="text" name="usernameLogin" id="usernameLogin">
+				</label> <br> <label for="passwordLogin"> <span>Password</span>
+					<input type="password" name="passwordLogin" id="passwordLogin">
+				</label> <br> <input type="submit" value="Submit"
+					id="loginSubmitButton">
+			</form>
+		</div>
     </div>
 
 
