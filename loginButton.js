@@ -30,18 +30,18 @@ $(document)
 																				// gets
 																				// the
 																				// username
-																$(
+																/*$(
 																		"a:contains('Login')")
 																		.load(
 																				"auction.html",
-																				result);// code
+																				result);*/// code
 																						// to
 																						// change
 																						// the
 																						// login
 																						// to
 																						// username
-																location.href = "http://localhost/auction.html";
+																location.href = "http://localhost/final/auction.html";
 
 															}
 														},
