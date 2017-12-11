@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 
 <html>
@@ -44,7 +45,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="accountCreation.html">Login</a></li>
+					<li><a href="accountCreation.html">Login <?php if(isset($_SESSION)){echo $_SESSION['username'];} ?></a></li>
 				</ul>
 			</div>
 		</div>
@@ -57,10 +58,10 @@
 		</div>
 	</div>
 
-<div id="titleSection">
-	<h2>Current Listings:</h2>
-</div>
-<!--
+	<div id="titleSection">
+		<h2>Current Listings:</h2>
+	</div>
+	<!--
 	<h3>Sort by:</h3>
 	<select id="categorySelect">
 		<option value="electronics">Electronics</option>
@@ -74,17 +75,17 @@
 		<option value="price">Other</option>
 	</select>
 	!-->
-<div id="sortItems">
-	<p>Click a button below for how you'd like to sort the items:</p>
-	
+	<div id="sortItems">
+		<p>Click a button below for how you'd like to sort the items:</p>
+
 		<button onclick="sortTableName()">Item Name</button>
 		<button onclick="sortCategory()">Item Category</button>
 		<button onclick="sortBid()">Current Bid</button>
 		<button onclick="sortDate()">Date</button>
 
-</div>
+	</div>
 
-	
+
 
 	<script>
 		function sortTableName() {
@@ -112,8 +113,8 @@
 	</script>
 
 	<script>
-		function sortCategory(){
-		var table, rows, switching, i, x, y, shouldSwitch;
+		function sortCategory() {
+			var table, rows, switching, i, x, y, shouldSwitch;
 			table = document.getElementById("table1");
 			switching = true;
 			while (switching) {
@@ -134,12 +135,11 @@
 				}
 			}
 		}
-
 	</script>
 
 	<script>
-		function sortBid(){
-		var table, rows, switching, i, x, y, shouldSwitch;
+		function sortBid() {
+			var table, rows, switching, i, x, y, shouldSwitch;
 			table = document.getElementById("table1");
 			switching = true;
 			while (switching) {
@@ -160,12 +160,11 @@
 				}
 			}
 		}
-
 	</script>
 
 	<script>
-		function sortDate(){
-		var table, rows, switching, i, x, y, shouldSwitch;
+		function sortDate() {
+			var table, rows, switching, i, x, y, shouldSwitch;
 			table = document.getElementById("table1");
 			switching = true;
 			while (switching) {
@@ -186,7 +185,6 @@
 				}
 			}
 		}
-
 	</script>
 
 
@@ -210,14 +208,15 @@
 	</script>
 
 
-<div id="itemSearch">
+	<div id="itemSearch">
 
-	<input type="text" id="item_name" onkeyup="searchItem()" placeholder="Search for an item..." title="Search for an item">
-	<div id="itemList"></div>
+		<input type="text" id="item_name" onkeyup="searchItem()"
+			placeholder="Search for an item..." title="Search for an item">
+		<div id="itemList"></div>
 
-</div>
+	</div>
 
-<script>
+	<script>
 		$(document).ready(function() {
 			$('#item_name').keyup(function() {
 				var query = $(this).val();
@@ -242,26 +241,27 @@
 		});
 	</script>
 
-<script>
-function searchItem() {
-  var td, td2, i;
-  var input = document.getElementById("item_name");
-  var filter = input.value.toUpperCase();
-  var table = document.getElementById("table1");
-  var tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
-    td2 = tr[i].getElementsByTagName("td")[3];
-    if (td || td2) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1 || td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }       
-  }
-}
-</script>
+	<script>
+		function searchItem() {
+			var td, td2, i;
+			var input = document.getElementById("item_name");
+			var filter = input.value.toUpperCase();
+			var table = document.getElementById("table1");
+			var tr = table.getElementsByTagName("tr");
+			for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[1];
+				td2 = tr[i].getElementsByTagName("td")[3];
+				if (td || td2) {
+					if (td.innerHTML.toUpperCase().indexOf(filter) > -1
+							|| td2.innerHTML.toUpperCase().indexOf(filter) > -1) {
+						tr[i].style.display = "";
+					} else {
+						tr[i].style.display = "none";
+					}
+				}
+			}
+		}
+	</script>
 
 
 
@@ -427,7 +427,11 @@ function searchItem() {
 					rowSelected.className += " selected";
 					var itemID = rowSelected.id;
 					document.getElementById('bidItem').value = itemID;
-					document.getElementById('bidAmount').setAttribute("min", rowSelected.getElementsByTagName("td")[4].innerHTML);
+					document
+							.getElementById('bidAmount')
+							.setAttribute(
+									"min",
+									rowSelected.getElementsByTagName("td")[4].innerHTML);
 
 				}
 			}
@@ -440,13 +444,14 @@ function searchItem() {
 
 	<div class="bidButton">
 		<form method="post">
-			Bid: <input type="number" id="bidAmount" name="bidAmount" step="0.01" min="0">
-			<input type="hidden" id="bidItem" name="bidItem" value="1"> <input
-				type="submit" value="Submit Bid" id="submitbid">
+			Bid: <input type="number" id="bidAmount" name="bidAmount" step="0.01"
+				min="0"> <input type="hidden" id="bidItem" name="bidItem"
+				value="1"> <input type="submit" value="Submit Bid"
+				id="submitbid">
 		</form>
 	</div>
 
-<!--
+	<!--
 	<div class="container" style="width: 500px;">
 		<h3>Search for Item</h3>
 		<label>Enter Item Name</label> <input type="text" name="itemauto"
