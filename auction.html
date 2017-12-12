@@ -13,7 +13,7 @@
 	rel='stylesheet' type='text/css'>
 <script src="jquery-3.2.1.js"></script>
 <script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="submit_form.js"></script>
@@ -122,8 +122,8 @@
 				rows = table.getElementsByTagName("TR");
 				for (i = 1; i < (rows.length - 1); i++) {
 					shouldSwitch = false;
-					x = rows[i].getElementsByTagName("TD")[3];
-					y = rows[i + 1].getElementsByTagName("TD")[3];
+					x = rows[i].getElementsByTagName("TD")[2];
+					y = rows[i + 1].getElementsByTagName("TD")[2];
 					if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
 						shouldSwitch = true;
 						break;
@@ -147,8 +147,8 @@
 				rows = table.getElementsByTagName("TR");
 				for (i = 1; i < (rows.length - 1); i++) {
 					shouldSwitch = false;
-					x = rows[i].getElementsByTagName("TD")[4];
-					y = rows[i + 1].getElementsByTagName("TD")[4];
+					x = rows[i].getElementsByTagName("TD")[3];
+					y = rows[i + 1].getElementsByTagName("TD")[3];
 					if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
 						shouldSwitch = true;
 						break;
@@ -172,8 +172,8 @@
 				rows = table.getElementsByTagName("TR");
 				for (i = 1; i < (rows.length - 1); i++) {
 					shouldSwitch = false;
-					x = rows[i].getElementsByTagName("TD")[5];
-					y = rows[i + 1].getElementsByTagName("TD")[5];
+					x = rows[i].getElementsByTagName("TD")[4];
+					y = rows[i + 1].getElementsByTagName("TD")[4];
 					if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
 						shouldSwitch = true;
 						break;
@@ -271,7 +271,6 @@
 			<tr>
 				<th>&nbsp;</th>
 				<th>Item</th>
-				<th>SellerID</th>
 				<th>Category</th>
 				<th>Current Bid</th>
 				<th>End Date</th>
@@ -279,125 +278,52 @@
 		</thead>
 
 		<tbody id="allitems">
-
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="tv item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>TV</td>
-				<td>John Smith</td>
-				<td>Electronics</td>
-				<td>1000000</td>
-				<td>2017-12-7</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="zebra item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>Zebra</td>
-				<td>John Doe</td>
-				<td>Animal</td>
-				<td>10</td>
-				<td>2017-12-6</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="apple item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>Apple</td>
-				<td>John Doe</td>
-				<td>Food</td>
-				<td>$1</td>
-				<td>2017-12-8</td>
-			</tr>
-
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="tv item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>TV</td>
-				<td>John Smith</td>
-				<td>Electronics</td>
-				<td>$100</td>
-				<td>2017-11-09</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="tv item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>TV</td>
-				<td>John Smith</td>
-				<td>Food</td>
-				<td>$100</td>
-				<td>2017-11-10</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="tv item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>TV</td>
-				<td>John Smith</td>
-				<td>Food</td>
-				<td>$100</td>
-				<td>2017-11-10</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="tv item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>TV</td>
-				<td>John Smith</td>
-				<td>Food</td>
-				<td>$100</td>
-				<td>2017-11-10</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="tv item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>TV</td>
-				<td>John Smith</td>
-				<td>Food</td>
-				<td>$100</td>
-				<td>2017-11-10</td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="btn btn-secondary"
-						data-container="body" data-toggle="popover" data-placement="right"
-						data-content="tv item description blah blahblah blah blah blah blah blah.">
-						Item Description</button>
-				</td>
-				<td>TV</td>
-				<td>John Smith</td>
-				<td>Food</td>
-				<td>$100</td>
-				<td>2017-11-10</td>
-			</tr>
+			<?php
+				$username = "sjs4025";
+				$password = "qweqaz!234567";
+				$server = "classroom.cs.unc.edu";
+				$database = "sjs4025db";
+		
+				$conn = new mysqli($server, $username, $password, $database);
+				if ($conn->connect_error) {
+						die("Connection failed: " . $conn->connect_error);
+				}else{echo "connected";}
+				echo "hello";
+				$result_sql = "SELECT I.id as id, I.name as itemname, C.name as categoryname, MAX(B.bid_price) as bidprice, I.exp_date as expiration, I.description 
+							   FROM Bid B, Category C, Item I 
+							   WHERE C.id = I.category_id AND B.item_id = I.id
+							   GROUP BY I.id, I.name, C.name, I.exp_date, I.description
+							   ORDER BY COUNT(B.bid_price)";
+				$result = mysqli_query($conn, $result_sql);
+				$numrows = mysqli_num_rows($result);
+				if($numrows >0){echo "success"; echo($numrows);}else{echo "no rows";}
+				if(isset($result)){echo "should be result";}else{echo "no result"; echo mysqli_connect_error();}
+				$count = 0;
+				while($row = mysqli_fetch_row($result)){
+					echo "<tr id="; 
+					echo ($row[0]); 
+					echo ">";
+					echo "<td>
+							<button type='button' class='btn btn-secondary'
+								data-container='body' data-toggle='popover' data-placement='right'
+								data-content=$row[5]>
+								Item Description</button>
+						</td>";
+					echo "<td>
+							$row[1]
+						</td>
+						<td>
+							$row[2]
+						</td>
+						<td>
+							$row[3]
+						</td>
+						<td>
+							$row[4]
+						</td>";
+					echo "</tr>";		
+				}
+				?>
 		</tbody>
 	</table>
 

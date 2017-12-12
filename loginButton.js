@@ -41,7 +41,7 @@ $(document)
 																						// login
 																						// to
 																						// username
-																location.href = "http://localhost/final/auction.html";
+																location.href = "auction.html";
 
 															}
 														},
