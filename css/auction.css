@@ -251,9 +251,23 @@ h3{
   color:black;
 }
 
-#existing_user > label > input{
+#new_user > button{
+  color: black;
+  padding: 15px;
+}
+
+#existing_user > form > label > input{
   color:black;
 }
+
+#accountSubmitButton{
+  color: black;
+}
+
+#loginSubmitButton{
+  color: black;
+}
+
 
 
 
