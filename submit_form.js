@@ -5,7 +5,6 @@ $(document).ready(
 			$("#submitItem").click(
 					function(e) {
 						e.preventDefault();
-						alert("submit clicked");
 						var itemName = $("#itemname").val();
 						var itemDesc = $("#itemdescription").val();
 						var itemPrice = $("#startingprice").val();
@@ -26,10 +25,25 @@ $(document).ready(
 						} else if (itemExp == '') {
 							alert("Please specify an expiration date");
 						} else {
+							alert("Item Posted! Thank you!");
+							$("#table1 tbody").append(
+								"<tr>"+
+								"<td>"+
+									"<button type='button' class='btn btn-secondary'"+
+									"data-container='body' data-toggle='popover' data-placement='right'"+
+									"data-content="+itemDesc+">"+
+									"Item Description</button>"+
+								"</td>"+
+								"<td>"+itemName+"</td>"+
+								"<td>"+itemCat+"</td>"+
+								"<td>"+itemPrice+"</td>"+
+								"<td>"+itemExp+"</td>"+
+								"</tr>"
+							);
 							$.ajax({
 								type : "POST",
 								url : "submit_form.php",
-								data : $('form').serialize(),
+								data : $("#submitform").serialize(),
 								cache : false,
 								success : function(result) {
 									console.log("submitted item");
